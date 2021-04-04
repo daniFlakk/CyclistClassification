@@ -82,15 +82,7 @@ public class Presenter implements ActionListener {
                 jfMainWindow.rest();
                 break;
             case C_REFRESH:
-//                for (int i = 0; i <= chart.getSize(); i++) {
-//                    System.out.println(i);
-//                    jfMainWindow.removeTable(i);
-//                }
-//                    chart.printlist();
-                jfMainWindow.removeTable();
-                for (int j = 0; j < chart.getSize(); j++) {
-                    jfMainWindow.addElementTable(chart.getRunner(j).objectVector());
-                }
+                refreshTable();
                 break;
             case C_BEST_WOMAN:
                 jfMainWindow.changeInfo("Mejor mujer: " + chart.printBestWoman());
@@ -105,14 +97,8 @@ public class Presenter implements ActionListener {
                 manageChangeLanguageES();
                 break;
             case C_FILECHOOSER:
-                try {
-                    String auxPath = jfMainWindow.fileChoosertest();
-                    managerFiles = new ManagerFiles(auxPath);
-                    startFile(mngFile);
-
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
+                addDoc();
+                refreshTable();
             default:
                 break;
             }
@@ -174,6 +160,24 @@ public class Presenter implements ActionListener {
         }
     }
 
+    public void refreshTable(){
+        jfMainWindow.removeTable();
+        for (int j = 0; j < chart.getSize(); j++) {
+            jfMainWindow.addElementTable(chart.getRunner(j).objectVector());
+        }
+    }
+
+    public void addDoc(){
+        try {
+            String auxPath = jfMainWindow.fileChoosertest();
+            managerFiles = new ManagerFiles(auxPath);
+            startFile(mngFile);
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
     public void changeToSpanish() throws IOException{
         HandlerLanguage.language = "resources/languages/languageES.properties";
         saveConfig();
@@ -204,17 +208,17 @@ public class Presenter implements ActionListener {
 
     }
 
-    private void splitlines(ArrayList<String> Lines) {
-
-        for(String Line : Lines) {
-
-            String[] aux = Utilities.splitLine (Line);
-
-            LocalDate localDate = arrayToLocalDate(aux[4]);
-
-            chart.addCyclist(new Cyclist(aux[1],aux[2],aux[3], newGender(aux[5]), localDate, LocalTime.parse(aux[7]), Team.valueOf(aux[6])));
-        }
-    }
+//    private void splitlines(ArrayList<String> Lines) {
+//
+//        for(String Line : Lines) {
+//
+//            String[] aux = Utilities.splitLine (Line);
+//
+//            LocalDate localDate = arrayToLocalDate(aux[4]);
+//
+//            chart.addCyclist(new Cyclist(aux[1],aux[2],aux[3], newGender(aux[5]), localDate, LocalTime.parse(aux[7]), Team.valueOf(aux[6])));
+//        }
+//    }
 
     public Gender newGender(String stringG){
         if ( stringG == "Femenino") {

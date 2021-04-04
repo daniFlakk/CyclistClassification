@@ -35,6 +35,7 @@ public class ContainerHeader extends JPanel {
         jButtonAdd.setActionCommand(Command.C_ADD_CYCLIST.toString());
         jButtonAdd.addActionListener(presenter);
         jButtonAdd.setBorderPainted(false);
+        jButtonAdd.setBackground(Color.decode("#215B6F"));
         jPanelt.add(jButtonAdd);
 
         JButton jButtonEraser = new JButton();
@@ -42,28 +43,37 @@ public class ContainerHeader extends JPanel {
         jButtonEraser.setActionCommand(Command.C_ELIMINATE.toString());
         jButtonEraser.addActionListener(presenter);
         jButtonEraser.setBorderPainted(false);
+        jButtonEraser.setBackground(Color.decode("#215B6F"));
         jPanelt.add(jButtonEraser);
 
         JButton jButtonrefresh = new JButton();
         jButtonrefresh.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ConstantsUI.PATH_REFRESH)).getImage().getScaledInstance(20,20,Image.SCALE_SMOOTH)));
         jButtonrefresh.setActionCommand(Command.C_REFRESH.toString());
         jButtonrefresh.addActionListener(presenter);
+        jButtonrefresh.setBorderPainted(false);
+        jButtonrefresh.setBackground(Color.decode("#215B6F"));
         jPanelt.add(jButtonrefresh);
 
         JButton jButtonbestw = new JButton();
         jButtonbestw.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ConstantsUI.PATH_BEST_WOMAN)).getImage().getScaledInstance(20,20,Image.SCALE_SMOOTH)));
         jButtonbestw.setActionCommand(Command.C_BEST_WOMAN.toString());
         jButtonbestw.addActionListener(presenter);
+        jButtonbestw.setBorderPainted(false);
+        jButtonbestw.setBackground(Color.decode("#215B6F"));
         jPanelt.add(jButtonbestw);
 
         jButtonAverage = new JButton();
         jButtonAverage.setText("Promedio por generos");
         jButtonAverage.setActionCommand(Command.C_AERAGE.toString());
+        jButtonAverage.setBorderPainted(false);
+        jButtonAverage.setBackground(Color.decode("#215B6F"));
         jButtonAverage.addActionListener(presenter);
         jPanelt.add(jButtonAverage);
 
         JButton jButtonenglish = new JButton();
         jButtonenglish.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ConstantsUI.PATH_USA)).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH)));
+        jButtonenglish.setBorderPainted(false);
+        jButtonenglish.setBackground(Color.decode("#215B6F"));
 //        jButtonenglish.setText("Ingles");
         jButtonenglish.setActionCommand(Command.C_ENGLISH.toString());
         jButtonenglish.addActionListener(presenter);
@@ -72,6 +82,8 @@ public class ContainerHeader extends JPanel {
         JButton jButtonEspanish = new JButton();
         jButtonEspanish.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ConstantsUI.PATH_SPAIN)).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH)));
 //        jButtonEspanish.setText("Español");
+        jButtonEspanish.setBorderPainted(false);
+        jButtonEspanish.setBackground(Color.decode("#215B6F"));
         jButtonEspanish.setActionCommand(Command.C_ESPANISH.toString());
         jButtonEspanish.addActionListener(presenter);
         jPanelt.add(jButtonEspanish);
@@ -83,7 +95,9 @@ public class ContainerHeader extends JPanel {
 //        jPanelt.add(jButtonFile);
 
         JButton jButtonchooser = new JButton();
-        jButtonchooser.setText("...");
+        jButtonchooser.setText("Agregar ciclistas por lista");
+        jButtonchooser.setBorderPainted(false);
+        jButtonchooser.setBackground(Color.decode("#215B6F"));
         jButtonchooser.setActionCommand(Command.C_FILECHOOSER.toString());
         jButtonchooser.addActionListener(presenter);
         jPanelt.add(jButtonchooser);
