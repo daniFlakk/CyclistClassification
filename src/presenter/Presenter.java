@@ -6,7 +6,6 @@ import models.Gender;
 import models.Team;
 import persistence.HandlerLanguage;
 import persistence.ManagerFiles;
-import utils.Utilities;
 import views.main.AddCyclistJDialog;
 import views.main.JfMainWindow;
 
@@ -16,14 +15,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
-import java.util.ArrayList;
 
 
 public class Presenter implements ActionListener {
 
     JfMainWindow jfMainWindow;
-//    AddCyclistJDialog addCyclistJDialog;
     Cyclist cyclist;
     Chart chart;
     HandlerLanguage handlerLanguage;
@@ -31,17 +27,14 @@ public class Presenter implements ActionListener {
     private Gender gender;
 
     private ManagerFiles mngFile;
-//    private Gender Gender;
 
     public Presenter() {
         jfMainWindow = new JfMainWindow(this);
         cyclist = new Cyclist();
         chart = new Chart();
         loadConfiguration();
-//        mngFile = new ManagerFiles("/img/Cyclist.bike");
 
         makeCyclist();
-//        managerFiles = new ManagerFiles("/img/Cyclist.bike");
         for (int i = 0; i < chart.getSize(); i++) {
             jfMainWindow.addElementTable(chart.getRunner(i).objectVector());
         }
@@ -69,7 +62,7 @@ public class Presenter implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (Command.valueOf( e.getActionCommand())){
-            case C_ADD_CYCLIST:
+            case C_ADD_CYCLIST_DIALOG:
                 jfMainWindow.ShowDiag();
                 new AddCyclistJDialog(this);
                 break;
@@ -193,7 +186,7 @@ public class Presenter implements ActionListener {
         while ((cyclistFile = managerFiles.reader()) != null){
             cyclistinfo = cyclistFile.split("\\?+");
             LocalDate localDate = arrayToLocalDate(cyclistinfo[4]);
-            if (cyclistinfo[6] == "IAM CYCLING"){
+            if (cyclistinfo[6].equals("IAM CYCLING")){
 
                 chart.addCyclist(new Cyclist(cyclistinfo[1],cyclistinfo[2],cyclistinfo[3], newGender(cyclistinfo[5]), localDate, LocalTime.parse(cyclistinfo[7]), Team.IAM_CYCLING));
             }else {
@@ -201,24 +194,7 @@ public class Presenter implements ActionListener {
             }
         }
         managerFiles.close();
-//        jfMainWindow.removeTable();
-//        ArrayList<String> strings = managerFiles.readFile(jfMainWindow.fileChoosertest());
-//
-//        splitlines(strings);
-
     }
-
-//    private void splitlines(ArrayList<String> Lines) {
-//
-//        for(String Line : Lines) {
-//
-//            String[] aux = Utilities.splitLine (Line);
-//
-//            LocalDate localDate = arrayToLocalDate(aux[4]);
-//
-//            chart.addCyclist(new Cyclist(aux[1],aux[2],aux[3], newGender(aux[5]), localDate, LocalTime.parse(aux[7]), Team.valueOf(aux[6])));
-//        }
-//    }
 
     public Gender newGender(String stringG){
         if ( stringG == "Femenino") {

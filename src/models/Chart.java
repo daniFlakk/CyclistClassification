@@ -22,22 +22,20 @@ public class Chart {
 		count = count + 1;
 		Collections.sort(cyclists);
 	}
-
-
-	public void order(ArrayList a){
-		Collections.sort(a);
-	}
-	/**
-	 * Metodo que muestra la lista de corredores
-	 * @return lista de corredores
-	 */
-	public ArrayList<Object[]> printlist() {
-		ArrayList<Object[]> list = new ArrayList<>();
-		for (int i = 0; i < cyclists.size(); i++) {
-			list.add(cyclists.get(i).objectVector());
-		}
-		return list;
-	}
+//	public void order(ArrayList a){
+//		Collections.sort(a);
+//	}
+//	/**
+//	 * Metodo que muestra la lista de corredores
+//	 * @return lista de corredores
+//	 */
+//	public ArrayList<Object[]> printlist() {
+//		ArrayList<Object[]> list = new ArrayList<>();
+//		for (int i = 0; i < cyclists.size(); i++) {
+//			list.add(cyclists.get(i).objectVector());
+//		}
+//		return list;
+//	}
 	
 	/**
 	 * Metodo que muestra el mejor tiempo de mujeres

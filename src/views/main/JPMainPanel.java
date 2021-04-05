@@ -1,17 +1,13 @@
 package views.main;
 
-import presenter.Command;
 import presenter.Presenter;
 import javax.swing.*;
 import views.body.ContainerBody;
 
 //import controller.Controller;
-import views.*;
-import views.body.InfoPanel;
 import views.header.ContainerHeader;
 
 import java.awt.*;
-import java.io.File;
 //import presenters.PresenterApp;
 //import views.header.JPContainerHeader;
 
@@ -92,7 +88,7 @@ public class JPMainPanel extends JPanel {
     }
 
     public String fileChoosertest(){
-        return jContainerHeader.fileChoosertest();
+        return jContainerHeader.filechooser();
     }
 
 }
