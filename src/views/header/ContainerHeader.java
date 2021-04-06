@@ -9,6 +9,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ContainerHeader extends JToolBar {
 
@@ -101,6 +103,15 @@ public class ContainerHeader extends JToolBar {
         jButtonchooser.addActionListener(presenter);
         jPanelt.add(jButtonchooser);
 
+        JButton jbuttonwriter = new JButton();
+//        jbuttonwriter.setIcon(new ImageIcon(new ImageIcon(getClass().getResource(ConstantsUI.PATH_ADD_FILE)).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH)));
+        jbuttonwriter.setText("Sacar archivo");
+        jbuttonwriter.setBorderPainted(false);
+        jbuttonwriter.setBackground(Color.decode("#215B6F"));
+        jbuttonwriter.setActionCommand(Command.C_WRITEFILE.toString());
+        jbuttonwriter.addActionListener(presenter);
+        jPanelt.add(jbuttonwriter);
+
         this.add(jPanelt);
 
     }
@@ -113,13 +124,13 @@ public class ContainerHeader extends JToolBar {
 //    }
 
     /**
-     * Metodo que permite seleccionar un fichero
+     * Metodo que permite seleccionar un fichero para lectura
      * @return Ruta absoluta
      */
     public String filechooser(){
         JFileChooser fc=new JFileChooser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.bike", "bike");
-        fc.setFileFilter(filtro);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.bike", "bike");
+        fc.setFileFilter(filter);
         int seleccion=fc.showOpenDialog(this);
         String aux;
         aux = " ";
@@ -127,6 +138,33 @@ public class ContainerHeader extends JToolBar {
         if(seleccion==JFileChooser.APPROVE_OPTION){
             File fichero=fc.getSelectedFile();
             aux = fichero.getAbsolutePath();
+        }
+        return aux;
+    }
+
+    /**
+     * Metodo que permite seleccionar un fichero para escritura
+     *
+     */
+    public String saveChooser(){
+        JFileChooser fcs=new JFileChooser();
+        String aux = "";
+
+        int seleccion=fcs.showSaveDialog(this);
+
+        if(seleccion==JFileChooser.APPROVE_OPTION){
+            //Seleccionamos el fichero
+            File fichero=fcs.getSelectedFile();
+            aux = fichero.getAbsolutePath();
+//            try(FileWriter fw=new FileWriter(fichero)){
+//
+////                Escribimos el texto en el fichero
+//                fw.write("textArea.getText()");
+//
+//            } catch (IOException e1) {
+//                e1.printStackTrace();
+//            }
+
         }
         return aux;
     }

@@ -91,4 +91,8 @@ public class JPMainPanel extends JPanel {
         return jContainerHeader.filechooser();
     }
 
+    public String saveChooser(){
+       return jContainerHeader.saveChooser();
+    }
+
 }

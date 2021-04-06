@@ -195,6 +195,15 @@ public class Cyclist implements Comparable<Cyclist> {
 	public Object[] objectVector() {
 		return new Object[] {dorsal,name,secondName,lastname,age,gender,team,fullTime,getActualAge()};
 	}
+
+	public String getSecondName() {
+		return secondName;
+	}
+
+	public String objectstring(){
+		String auxs = getName() + " " + getSecondName() + " " + getLastname() + " " + getAge() + " " + getGender() + " " + getTeam() + " " + getFullTime();
+		return auxs;
+	}
 	
 	
 }

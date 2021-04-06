@@ -10,6 +10,7 @@ import java.util.Collections;
  */
 public class Chart {
 	private ArrayList<Cyclist> cyclists= new ArrayList<>();
+	public String cyclistError = "";
 	private int count = 0;
 	
 	/**
@@ -23,8 +24,17 @@ public class Chart {
 			count = count + 1;
 			Collections.sort(cyclists);
 		}else {
-			System.out.println("pvta");
+			cyclistNotValid(cyclist);
 		}
+
+	}
+
+	public void cyclistNotValid(Cyclist cyclist){
+		String auxc = " ";
+		auxc = auxc + cyclist.objectstring();
+//		System.out.println(cyclist.objectstring());
+		cyclistError += (cyclist.objectstring() + "\n");
+//		return auxc;
 	}
 //	public void order(ArrayList a){
 //		Collections.sort(a);
@@ -40,7 +50,12 @@ public class Chart {
 //		}
 //		return list;
 //	}
-	
+
+
+	public String getCyclistError() {
+		return cyclistError;
+	}
+
 	/**
 	 * Metodo que muestra el mejor tiempo de mujeres
 	 * @return mejor ciclista mujer

@@ -77,6 +77,10 @@ public class JfMainWindow extends JFrame {
         return jpMainPanel.fileChoosertest();
     }
 
+    public String saveChooser(){
+        return jpMainPanel.saveChooser();
+    }
+
 //    public void changeMessage(String message){
 //        jpMainPanel.changeMessage(message);
 //    }

@@ -97,6 +97,10 @@ public class Presenter implements ActionListener {
             case C_FILECHOOSER:
                 addDoc();
                 refreshTable();
+                break;
+            case C_WRITEFILE:
+                managerFiles.writeNewfile(writeFile(), chart.cyclistError);
+
             default:
                 break;
             }
@@ -199,6 +203,10 @@ public class Presenter implements ActionListener {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+
+    public String writeFile(){
+        return jfMainWindow.saveChooser();
     }
 
     public void changeToSpanish() throws IOException{

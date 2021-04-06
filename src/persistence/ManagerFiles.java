@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class ManagerFiles {
 
     private File file;
+    private File filewrite;
     private FileReader fileReader;
     private FileWriter fileWriter;
     private BufferedWriter bufferedWriter = null;
@@ -53,16 +54,27 @@ public class ManagerFiles {
         }
     }
 
-    //        Filewriter filtriter;
-    public ArrayList<String> readFile(String nameFile) throws IOException {
-        ArrayList<String> linesReading = new ArrayList();
-        fileReader = new FileReader(nameFile);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String lineRead;
-        while ((lineRead = bufferedReader.readLine()) != null) {
-            linesReading.add(lineRead);
+    public void writeNewfile(String pathToSave, String cyclistBad){
+        file = new File(pathToSave);
+        try(FileWriter fw=new FileWriter(pathToSave)){
+
+            fw.write(cyclistBad);
+
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-        bufferedReader.close();
-        return linesReading;
     }
+
+    //        Filewriter filtriter;
+//    public ArrayList<String> readFile(String nameFile) throws IOException {
+//        ArrayList<String> linesReading = new ArrayList();
+//        fileReader = new FileReader(nameFile);
+//        BufferedReader bufferedReader = new BufferedReader(fileReader);
+//        String lineRead;
+//        while ((lineRead = bufferedReader.readLine()) != null) {
+//            linesReading.add(lineRead);
+//        }
+//        bufferedReader.close();
+//        return linesReading;
+//    }
 }
