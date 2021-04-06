@@ -17,10 +17,14 @@ public class Chart {
 	 * @param cyclist: ciclista que se desea agregar
 	 */
 	public void addCyclist(Cyclist cyclist) {
-		cyclists.add(cyclist);
-		cyclist.setDorsal(count + 1);
-		count = count + 1;
-		Collections.sort(cyclists);
+		if ((cyclist.getActualAge() >= 15 && cyclist.getActualAge() <= 40) && (cyclist.getName().charAt(0) == cyclist.getName().toUpperCase().charAt(0) && cyclist.getLastname().charAt(0) == cyclist.getLastname().toUpperCase().charAt(0) ) ){
+			cyclists.add(cyclist);
+			cyclist.setDorsal(count + 1);
+			count = count + 1;
+			Collections.sort(cyclists);
+		}else {
+			System.out.println("pvta");
+		}
 	}
 //	public void order(ArrayList a){
 //		Collections.sort(a);

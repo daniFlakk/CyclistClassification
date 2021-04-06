@@ -84,7 +84,7 @@ public class JPMainPanel extends JPanel {
 
     public void changeLanguage(){
         jContainerBody.changeLanguage();
-        jContainerHeader.changeLanguage();
+//        jContainerHeader.changeLanguage();
     }
 
     public String fileChoosertest(){

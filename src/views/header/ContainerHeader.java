@@ -105,12 +105,12 @@ public class ContainerHeader extends JToolBar {
 
     }
 
-    /**
-     * Metodo Para cambiar el idioma de un boton
-     */
-    public void changeLanguage(){
-        jButtonAverage.setText(HandlerLanguage.languageProperties.getProperty("Average_button"));
-    }
+//    /**
+//     * Metodo Para cambiar el idioma de un boton
+//     */
+//    public void changeLanguage(){
+//        jButtonAverage.setText(HandlerLanguage.languageProperties.getProperty("Average_button"));
+//    }
 
     /**
      * Metodo que permite seleccionar un fichero

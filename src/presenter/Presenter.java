@@ -1,5 +1,7 @@
 package presenter;
 
+import exception.CyclistAgeExeption;
+import exception.CyclistMayusExeption;
 import models.Chart;
 import models.Cyclist;
 import models.Gender;
@@ -25,6 +27,9 @@ public class Presenter implements ActionListener {
     HandlerLanguage handlerLanguage;
     ManagerFiles managerFiles;
     private Gender gender;
+    private int ageAux;
+    private String nameAux;
+    private String lastAux;
 
     private ManagerFiles mngFile;
 
@@ -106,6 +111,31 @@ public class Presenter implements ActionListener {
         manageChangeLanguage();
     }
 
+    /**
+     * Metodo que verifica que la edad del corredor sea mayor o igual a 15 y menor o igual a 40
+     * @return true si la edad es valida
+     * @throws CyclistAgeExeption
+     */
+    public boolean checkAge()throws CyclistAgeExeption{
+        if( ageAux >= 15 && ageAux <= 40 ){
+            return true;
+        }else {
+            throw new CyclistAgeExeption("Edad incorrecta");
+        }
+    }
+
+    /**
+     * Metodo que verifica si la primera letra del nombre es mayuscula
+     * @return: Tru si la condicion se cumple
+     * @throws CyclistMayusExeption
+     */
+    public boolean checkMayus() throws CyclistMayusExeption{
+        if(nameAux.charAt(0) == nameAux.toUpperCase().charAt(0) && lastAux.charAt(0) == lastAux.toUpperCase().charAt(0) ){
+            return true;
+        }else {
+            throw new CyclistMayusExeption("Nombre bad");
+        }
+    }
     private void manageChangeLanguageES(){
         try {
             changeToSpanish();
@@ -187,8 +217,8 @@ public class Presenter implements ActionListener {
             cyclistinfo = cyclistFile.split("\\?+");
             LocalDate localDate = arrayToLocalDate(cyclistinfo[4]);
             if (cyclistinfo[6].equals("IAM CYCLING")){
-
                 chart.addCyclist(new Cyclist(cyclistinfo[1],cyclistinfo[2],cyclistinfo[3], newGender(cyclistinfo[5]), localDate, LocalTime.parse(cyclistinfo[7]), Team.IAM_CYCLING));
+
             }else {
                 chart.addCyclist(new Cyclist(cyclistinfo[1],cyclistinfo[2],cyclistinfo[3], newGender(cyclistinfo[5]), localDate, LocalTime.parse(cyclistinfo[7]), Team.valueOf(cyclistinfo[6])));
             }
