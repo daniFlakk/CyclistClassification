@@ -32,7 +32,7 @@ public class ContainerBody extends JPanel {
         tableItems.getTableHeader().setReorderingAllowed(false);
         tableItems.getTableHeader().setBackground(Color.decode("#5FBDD6"));
         tableItems.getTableHeader().setForeground(Color.WHITE);
-        tableItems.setBackground(Color.decode("#ff9800"));
+        tableItems.setBackground(Color.decode("#96c8a2"));
         tableItems.setFillsViewportHeight(true);
         tableItems.setRowHeight(25);
 

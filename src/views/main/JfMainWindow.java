@@ -53,6 +53,11 @@ public class JfMainWindow extends JFrame {
         addCyclistJDialog.setVisible(true);
     }
 
+    public void showError(String messagge){
+        JOptionPane.showMessageDialog(null, messagge,
+                "Hey!", JOptionPane.ERROR_MESSAGE);
+    }
+
     public void addElementTable(Object[] objectVector) {
         jpMainPanel.addElementTable(objectVector);
     }

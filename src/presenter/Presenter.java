@@ -1,7 +1,5 @@
 package presenter;
 
-import exception.CyclistAgeExeption;
-import exception.CyclistMayusExeption;
 import models.Chart;
 import models.Cyclist;
 import models.Gender;
@@ -10,7 +8,6 @@ import persistence.HandlerLanguage;
 import persistence.ManagerFiles;
 import views.main.AddCyclistJDialog;
 import views.main.JfMainWindow;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +15,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-
+/**
+ * @author Santiago Ortega
+ *@Date 10/03/2021
+ */
 public class Presenter implements ActionListener {
 
     JfMainWindow jfMainWindow;
@@ -26,10 +26,6 @@ public class Presenter implements ActionListener {
     Chart chart;
     HandlerLanguage handlerLanguage;
     ManagerFiles managerFiles;
-    private Gender gender;
-    private int ageAux;
-    private String nameAux;
-    private String lastAux;
 
     private ManagerFiles mngFile;
 
@@ -39,30 +35,10 @@ public class Presenter implements ActionListener {
         chart = new Chart();
         loadConfiguration();
 
-        makeCyclist();
         for (int i = 0; i < chart.getSize(); i++) {
             jfMainWindow.addElementTable(chart.getRunner(i).objectVector());
         }
     }
-
-    public void makeCyclist(){
-        chart.addCyclist(new Cyclist("Andrea", "Carolina", "Lopez", Gender.FEMALE, LocalDate.of(2001,12,02), LocalTime.of(1,10,30), Team.ASTANA));
-        chart.addCyclist(new Cyclist("Andres","Manuel", "Nares", Gender.MALE, LocalDate.of(2000,2,22),LocalTime.of(2,1,10), Team.INEOS));
-        chart.addCyclist(new Cyclist("Lucho","", "Herrera", Gender.MALE, LocalDate.of(1995,10,18),LocalTime.of(1,1,1), Team.EF));
-        chart.addCyclist(new Cyclist("Camila","", "Ortega", Gender.FEMALE, LocalDate.of(1996,6,12),LocalTime.of(2,1,17), Team.MOVISTAR));
-        chart.addCyclist(new Cyclist("Dora","exploradora", "Melendes", Gender.FEMALE, LocalDate.of(1999,8,22),LocalTime.of(1,20,11), Team.UAE));
-        chart.addCyclist(new Cyclist("Laura","", "Benavides", Gender.FEMALE, LocalDate.of(2001,2,28),LocalTime.of(1,11,2), Team.ASTANA));
-        chart.addCyclist(new Cyclist("Camilo","", "Joya", Gender.MALE, LocalDate.of(1989,8,4),LocalTime.of(1,13,1), Team.INEOS));
-        chart.addCyclist(new Cyclist("Shinji","", "Ikari", Gender.MALE, LocalDate.of(2004,9,18),LocalTime.of(1,25,10), Team.EF));
-        chart.addCyclist(new Cyclist("Ricardo","", "Montaner", Gender.MALE, LocalDate.of(1990,6,4),LocalTime.of(1,19,40), Team.MOVISTAR));
-        chart.addCyclist(new Cyclist("Angela","", "Barreto", Gender.FEMALE, LocalDate.of(2002,7,15),LocalTime.of(1,30,36), Team.UAE));
-        chart.addCyclist(new Cyclist("Julissa","", "Martines", Gender.FEMALE, LocalDate.of(2000,10,1),LocalTime.of(1,19,30), Team.ASTANA));
-        chart.addCyclist(new Cyclist("Nairo","", "Quintana", Gender.MALE, LocalDate.of(1990,2,4),LocalTime.of(1,0,58), Team.INEOS));
-        chart.addCyclist(new Cyclist("Egan","", "Bernal", Gender.MALE, LocalDate.of(1993,4,29),LocalTime.of(1,2,1), Team.EF));
-        chart.addCyclist(new Cyclist("Sarith","", "Lopez", Gender.FEMALE, LocalDate.of(2001,11,7),LocalTime.of(1,5,1), Team.MOVISTAR));
-        chart.addCyclist(new Cyclist("Diego","", "Puerto", Gender.MALE, LocalDate.of(1990,7,24),LocalTime.of(1,18,8), Team.UAE));
-	}
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -115,31 +91,7 @@ public class Presenter implements ActionListener {
         manageChangeLanguage();
     }
 
-    /**
-     * Metodo que verifica que la edad del corredor sea mayor o igual a 15 y menor o igual a 40
-     * @return true si la edad es valida
-     * @throws CyclistAgeExeption
-     */
-    public boolean checkAge()throws CyclistAgeExeption{
-        if( ageAux >= 15 && ageAux <= 40 ){
-            return true;
-        }else {
-            throw new CyclistAgeExeption("Edad incorrecta");
-        }
-    }
 
-    /**
-     * Metodo que verifica si la primera letra del nombre es mayuscula
-     * @return: Tru si la condicion se cumple
-     * @throws CyclistMayusExeption
-     */
-    public boolean checkMayus() throws CyclistMayusExeption{
-        if(nameAux.charAt(0) == nameAux.toUpperCase().charAt(0) && lastAux.charAt(0) == lastAux.toUpperCase().charAt(0) ){
-            return true;
-        }else {
-            throw new CyclistMayusExeption("Nombre bad");
-        }
-    }
     private void manageChangeLanguageES(){
         try {
             changeToSpanish();
@@ -235,11 +187,13 @@ public class Presenter implements ActionListener {
     }
 
     public Gender newGender(String stringG){
-        if ( stringG == "Femenino") {
-            return Gender.FEMALE;
+        Gender gender1;
+        if ( stringG.equals("Femenino")) {
+            gender1 = Gender.FEMENINO;
         }else{
-            return Gender.MALE;
+            gender1 = Gender.MASCULINO;
         }
+        return gender1;
     }
 
     public LocalDate arrayToLocalDate(String dates){

@@ -5,6 +5,7 @@ import persistence.HandlerLanguage;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class InfoPanel extends JPanel {
 
     JLabel jLabelInfo;
@@ -12,10 +13,13 @@ public class InfoPanel extends JPanel {
 
     public InfoPanel() {
         this.setPreferredSize(new Dimension(300,100));
-        this.setBackground(Color.decode("#215B6F"));
+        this.setBackground(Color.decode("#536878"));
         initComponents();
     }
 
+    /**
+     * Metodo que incia los componentes de la clase infoPanel
+     */
     public void initComponents(){
         jlabelTitle = new JLabel("La informacion deseada es: ");
         jlabelTitle.setFont(new Font(Font.MONOSPACED,Font.BOLD,15));

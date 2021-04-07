@@ -11,4 +11,5 @@ public class ConstantsUI {
     public static final String PATH_SPAIN = "/img/spain.png";
     public static final String PATH_ICON = "/img/icon.png";
     public static final String PATH_ADD_FILE = "/img/addFile.png";
+    public static final String PATH_GET_REJECT = "/img/reject.png";
 }

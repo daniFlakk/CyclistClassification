@@ -39,6 +39,9 @@ public class Cyclist implements Comparable<Cyclist> {
 		setActualAge();
 	}
 
+	/**
+	 * Metodo constructor sin parametros
+	 */
 	public Cyclist() {
 
 	}
@@ -60,14 +63,6 @@ public class Cyclist implements Comparable<Cyclist> {
 	}
 
 	/**
-	 * Metodo que da nombre a un ciclista
-	 * @param name:nombre que recibe el ciclista
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
 	 * Metodo que devuelve el apellido del ciclista
 	 * @return nombre ciclista
 	 */
@@ -75,14 +70,6 @@ public class Cyclist implements Comparable<Cyclist> {
 		return lastname;
 	}
 
-	/**
-	 * Metodo que da apellido al ciclista
-	 * @param lastname: apellido del ciclista
-	 */
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-	
 	/**
 	 * Metodo que devuelve el genero del ciclista
 	 * @return genero ciclista
@@ -92,14 +79,6 @@ public class Cyclist implements Comparable<Cyclist> {
 	}
 
 	/**
-	 * Metodo que da el genero a un ciclista
-	 * @param gender: genero del ciclista
-	 */
-//	public void setGender(String gender) {
-//		this.gender = gender;
-//	}
-
-	/**
 	 * Metodo que devuelve la fecha de nacimiento del ciclista
 	 * @return fecha de nacimiento ciclista
 	 */
@@ -107,15 +86,6 @@ public class Cyclist implements Comparable<Cyclist> {
 		return age;
 	}
 	
-	/**
-	 * Metodo que da una fecha de nacimiento al ciclista
-	 * @param age: fecha de nacimiento del ciclista
-	 */
-	public void setAge(LocalDate age) {
-		this.age = age;
-	}
-	
-
 	/**
 	 * Metodo que da una edad al ciclista
 	 */
@@ -129,22 +99,6 @@ public class Cyclist implements Comparable<Cyclist> {
 	 */
 	public LocalTime getFullTime() {
 		return fullTime;
-	}
-
-	/**
-	 * Metodo que da un tiempo total de carrera al ciclista
-	 * @param fullTime: Tiempo total del ciclista
-	 */
-	public void setFullTime(LocalTime fullTime) {
-		this.fullTime = fullTime;
-	}
-
-	/**
-	 * Metodo que devuelve el dorsal del ciclista
-	 * @return dorsal ciclista
-	 */
-	public int getDorsal() {
-		return dorsal;
 	}
 
 	/**
@@ -180,15 +134,6 @@ public class Cyclist implements Comparable<Cyclist> {
 	}
 
 	/**
-	 * Metodo que da un equipo al ciclista
-	 * @param team: equipo
-	 */
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-	
-	
-	/**
 	 * Metodo que convierte de objeto a vector
 	 * @return un vector
 	 */
@@ -196,14 +141,21 @@ public class Cyclist implements Comparable<Cyclist> {
 		return new Object[] {dorsal,name,secondName,lastname,age,gender,team,fullTime,getActualAge()};
 	}
 
+	/**
+	 * Metodo getter para secondName
+	 * @return el segundo nombre del ciclista
+	 */
 	public String getSecondName() {
 		return secondName;
 	}
 
+	/**
+	 * Metodo que convierto un objeto cyclist a String
+	 * @return un string con los datos del ciclista
+	 */
 	public String objectstring(){
 		String auxs = getName() + " " + getSecondName() + " " + getLastname() + " " + getAge() + " " + getGender() + " " + getTeam() + " " + getFullTime();
 		return auxs;
 	}
-	
-	
+
 }

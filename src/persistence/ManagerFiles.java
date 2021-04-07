@@ -1,8 +1,9 @@
 package persistence;
-
 import java.io.*;
-import java.util.ArrayList;
-
+/**
+ * @author Santiago Ortega
+ *@Date 10/03/2021
+ */
 public class ManagerFiles {
 
     private File file;
@@ -15,6 +16,10 @@ public class ManagerFiles {
     public static final char WRITER = 'w';
     public static final char READER = 'r';
 
+    /**
+     * Constructor de la clase
+     * @param fileN
+     */
     public ManagerFiles(String fileN) {
         file = new File(fileN);
     }
@@ -65,16 +70,4 @@ public class ManagerFiles {
         }
     }
 
-    //        Filewriter filtriter;
-//    public ArrayList<String> readFile(String nameFile) throws IOException {
-//        ArrayList<String> linesReading = new ArrayList();
-//        fileReader = new FileReader(nameFile);
-//        BufferedReader bufferedReader = new BufferedReader(fileReader);
-//        String lineRead;
-//        while ((lineRead = bufferedReader.readLine()) != null) {
-//            linesReading.add(lineRead);
-//        }
-//        bufferedReader.close();
-//        return linesReading;
-//    }
 }
